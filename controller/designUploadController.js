@@ -30,7 +30,7 @@ const addFiles = async (req, res) => {
   try {
     const fileName = `${uuidv4()}?${categoryName}?${file.originalname}`;
 
-    const fileUrl = await azure.azureStore(fileName, file.buffer);
+    const fileUrl = await azure.s3Store(fileName, file.buffer);
 
     await Design.create({
       designUrl: fileUrl,
